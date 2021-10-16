@@ -44,10 +44,10 @@ public class RegistrationService implements RegistrationServiceInterface{
 
 
     public Long deleteRegistration(String id) {
-        Optional<Registration> registration = registrationRepository.findById(Long.parseLong(id));
-        if (registration.isPresent()) {
-            registrationRepository.deleteById(registration.get().getId());
-            return registration.get().getId();
+        Registration registration = getById(id);
+        if (registration != null) {
+            registrationRepository.deleteById(registration.getId());
+            return registration.getId();
         }
         return null;
     }
