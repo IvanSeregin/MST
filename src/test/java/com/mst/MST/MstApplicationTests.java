@@ -7,13 +7,13 @@ import com.mst.MST.registration.services.RegistrationServiceInterface;
 import com.mst.MST.vehicle.entities.Vehicle;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 @SpringBootTest
 public class MstApplicationTests {
