@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
 
+import java.util.Objects;
+
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -74,5 +76,19 @@ public class Insurer {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Insurer insurer = (Insurer) o;
+        return getName().equals(insurer.getName()) &&
+                getCode().equals(insurer.getCode());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getCode());
     }
 }
