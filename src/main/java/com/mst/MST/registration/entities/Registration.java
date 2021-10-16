@@ -5,6 +5,8 @@ import com.mst.MST.vehicle.entities.Vehicle;
 
 import javax.persistence.*;
 
+import java.util.Objects;
+
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -94,5 +96,20 @@ public class Registration {
 
     public void setInsurer(Insurer insurer) {
         this.insurer = insurer;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Registration that = (Registration) o;
+        return getNumberPlate().equals(that.getNumberPlate()) &&
+                getVehicle().equals(that.getVehicle()) &&
+                getInsurer().equals(that.getInsurer());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getNumberPlate(), getVehicle(), getInsurer());
     }
 }

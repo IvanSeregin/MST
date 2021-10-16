@@ -2,6 +2,8 @@ package com.mst.MST.vehicle.entities;
 
 import javax.persistence.*;
 
+import java.util.Objects;
+
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -98,5 +100,21 @@ public class Vehicle {
 
     public void setColour(String colour) {
         this.colour = colour;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vehicle vehicle = (Vehicle) o;
+        return getType().equals(vehicle.getType()) &&
+                getMake().equals(vehicle.getMake()) &&
+                getModel().equals(vehicle.getModel()) &&
+                getColour().equals(vehicle.getColour());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getType(), getMake(), getModel(), getColour());
     }
 }
